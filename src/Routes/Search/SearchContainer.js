@@ -38,7 +38,7 @@ export default class SearchContainer extends Component {
                 tvResults
             });
         } catch {
-            this.setState({error: "Can't find movies information."});
+            this.setState({error: "Can't find results."});
         } finally {
             this.setState({ loading: false });
         }

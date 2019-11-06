@@ -25,7 +25,11 @@ const Item = styled.li `
     width: 80px;
     height: 50px;
     text-align: center;
-    border-bottom: 3px solid ${props => (props.current ? "#3498db" : "transparent")};
+    border-bottom: 3px solid ${props => (
+    props.current
+        ? "#3498db"
+        : "transparent"
+)};
     transition: border-bottom 0.5s ease-in-out;
 `;
 
@@ -36,9 +40,23 @@ const SLink = styled(Link)`
     justify-content: center;
 `;
 
-export default withRouter(({location: {pathname}}) => (
+const Banner = styled.li `
+    font-size:26px;
+    margin: 10px 30px;
+    color: red;
+    opacity: 0.8;
+    &:hover{opacity:1.0;}
+    transition: opacity 0.2s ease-in-out;
+`;
+
+export default withRouter(({location: {
+        pathname
+    }}) => (
     <Header>
         <List>
+            <Banner>
+                Koflix
+            </Banner>
             <Item current={pathname === '/'}>
                 <SLink to='/'>Movies</SLink>
             </Item>

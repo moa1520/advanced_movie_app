@@ -31,14 +31,13 @@ export default class TVContainer extends Component {
             this.setState({topRated, popular, airingToday});
 
         } catch  {
-            this.setState({error: "Can't find movies information."});
+            this.setState({error: "Can't find TV information."});
         } finally {
             this.setState({loading: false});
         }
     }
     render() {
         const {topRated, popular, airingToday, error, loading} = this.state;
-        console.log(this.state);
         return <TVPresenter
             topRated={topRated}
             popular={popular}
