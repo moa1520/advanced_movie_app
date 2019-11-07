@@ -42,7 +42,7 @@ const SLink = styled(Link)`
 
 const Banner = styled.li `
     font-size:26px;
-    margin: 10px 30px;
+    margin: 0 30px;
     color: red;
     opacity: 0.8;
     &:hover{opacity:1.0;}
@@ -55,7 +55,7 @@ export default withRouter(({location: {
     <Header>
         <List>
             <Banner>
-                Koflix
+                <SLink to='/'>Koflix</SLink>
             </Banner>
             <Item current={pathname === '/'}>
                 <SLink to='/'>Movies</SLink>
