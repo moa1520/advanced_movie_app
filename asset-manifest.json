@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/advanced_movie_app/static/js/main.22068779.chunk.js",
-    "main.js.map": "/advanced_movie_app/static/js/main.22068779.chunk.js.map",
+    "main.js": "/advanced_movie_app/static/js/main.ae899bbe.chunk.js",
+    "main.js.map": "/advanced_movie_app/static/js/main.ae899bbe.chunk.js.map",
     "runtime-main.js": "/advanced_movie_app/static/js/runtime-main.55731191.js",
     "runtime-main.js.map": "/advanced_movie_app/static/js/runtime-main.55731191.js.map",
     "static/js/2.4fee4daa.chunk.js": "/advanced_movie_app/static/js/2.4fee4daa.chunk.js",
     "static/js/2.4fee4daa.chunk.js.map": "/advanced_movie_app/static/js/2.4fee4daa.chunk.js.map",
     "index.html": "/advanced_movie_app/index.html",
-    "precache-manifest.f7c84bc40a4e807043200c737b5b9606.js": "/advanced_movie_app/precache-manifest.f7c84bc40a4e807043200c737b5b9606.js",
+    "precache-manifest.16ddf25ccb7ce768a1f42c0bbc81a073.js": "/advanced_movie_app/precache-manifest.16ddf25ccb7ce768a1f42c0bbc81a073.js",
     "service-worker.js": "/advanced_movie_app/service-worker.js",
     "static/media/nothing.jpg": "/advanced_movie_app/static/media/nothing.fe502a59.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.55731191.js",
     "static/js/2.4fee4daa.chunk.js",
-    "static/js/main.22068779.chunk.js"
+    "static/js/main.ae899bbe.chunk.js"
   ]
 }
