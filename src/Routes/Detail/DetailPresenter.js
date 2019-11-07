@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from 'Components/Loader';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     height: calc(100vh - 50px);
@@ -64,10 +65,52 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-    font-size: 24px;
+    font-size: 16px;
     opacity: 0.7;
     line-height: 1.5;
     width: 80%;
+`;
+
+const TabContainer = styled.ul`
+    width: 80%;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+`;
+
+const Tab = styled.li`
+    font-size: 16px;
+    text-align: center;
+    width: 120px;
+    height: 50px;
+    opacity: 0.7;
+    &:hover {
+        opacity: 1;
+    }
+    border-bottom: 3px solid ${props => (
+        props.current
+            ? "#3498db"
+            : "transparent"
+    )};
+    transition: border-bottom 0.5s ease-in-out, opacity 0.1s ease-in-out;
+`;
+
+const ALink = styled.a`
+    height: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const SLink = styled(Link)`
+    height: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const DetailPresenter = ({ result, error, loading }) => (
@@ -121,6 +164,17 @@ const DetailPresenter = ({ result, error, loading }) => (
                         }</Item>
                     </ItemContainer>
                     <Overview>{result.overview}</Overview>
+                    <TabContainer>
+                        <Tab>
+                            <ALink href='/'>Youtube</ALink>
+                        </Tab>
+                        <Tab>
+                            <SLink>Season</SLink>
+                        </Tab>
+                        <Tab>
+                            <SLink>Production Company</SLink>
+                        </Tab>
+                    </TabContainer>
                 </Data>
             </Content>
         </Container>)

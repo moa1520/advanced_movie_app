@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Header = styled.header `
+const Header = styled.header`
     color: white;
     position: fixed;
     font-size: 16px;
@@ -17,19 +17,19 @@ const Header = styled.header `
     box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.8);
 `;
 
-const List = styled.ul `
+const List = styled.ul`
     display: flex;
 `;
 
-const Item = styled.li `
+const Item = styled.li`
     width: 80px;
     height: 50px;
     text-align: center;
     border-bottom: 3px solid ${props => (
-    props.current
-        ? "#3498db"
-        : "transparent"
-)};
+        props.current
+            ? "#3498db"
+            : "transparent"
+    )};
     transition: border-bottom 0.5s ease-in-out;
 `;
 
@@ -40,7 +40,7 @@ const SLink = styled(Link)`
     justify-content: center;
 `;
 
-const Banner = styled.li `
+const Banner = styled.li`
     font-size:26px;
     margin: 0 30px;
     color: red;
@@ -49,23 +49,23 @@ const Banner = styled.li `
     transition: opacity 0.2s ease-in-out;
 `;
 
-export default withRouter(({location: {
-        pathname
-    }}) => (
-    <Header>
-        <List>
-            <Banner>
-                <SLink to='/'>Koflix</SLink>
-            </Banner>
-            <Item current={pathname === '/'}>
-                <SLink to='/'>Movies</SLink>
-            </Item>
-            <Item current={pathname === '/tv'}>
-                <SLink to='/tv'>TV</SLink>
-            </Item>
-            <Item current={pathname === '/search'}>
-                <SLink to='/search'>Search</SLink>
-            </Item>
-        </List>
-    </Header>
-));
+export default withRouter(({ location: {
+    pathname
+} }) => (
+        <Header>
+            <List>
+                <Banner>
+                    <SLink to='/'>Koflix</SLink>
+                </Banner>
+                <Item current={pathname === '/'}>
+                    <SLink to='/'>Movies</SLink>
+                </Item>
+                <Item current={pathname === '/tv'}>
+                    <SLink to='/tv'>TV</SLink>
+                </Item>
+                <Item current={pathname === '/search'}>
+                    <SLink to='/search'>Search</SLink>
+                </Item>
+            </List>
+        </Header>
+    ));
