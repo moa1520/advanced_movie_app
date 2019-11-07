@@ -166,7 +166,7 @@ const DetailPresenter = ({ result, error, loading }) => (
                     <Overview>{result.overview}</Overview>
                     <TabContainer>
                         <Tab>
-                            <ALink href={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}>Youtube</ALink>
+                            <ALink href={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`} target='_blank'>Youtube</ALink>
                         </Tab>
                         <Tab>
                             <SLink>Season</SLink>
