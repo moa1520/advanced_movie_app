@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from 'Components/Loader';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router-dom';
+import Section from '../../Components/Section';
+import Poster from 'Components/Poster';
+import Profile from 'Components/Profile';
 
 const Container = styled.div`
     height: calc(100vh - 50px);
@@ -80,6 +82,7 @@ const TabContainer = styled.ul`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 30px;
 `;
 
 const Tab = styled.li`
@@ -106,14 +109,19 @@ const ALink = styled.a`
     justify-content: center;
 `;
 
-const SLink = styled(Link)`
+const SLink = styled.div`
     height: 50px;
     display:flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 `;
 
-const DetailPresenter = ({ result, error, loading }) => (
+const TabViewer = styled.div`
+    margin-bottom: 50px;
+`;
+
+const DetailPresenter = ({ result, handleSeason,handleCollection,collection, handleCreatedBy, create,  isMovie, season, error, loading }) => (
     loading
         ? <><Helmet><title>Koflix | Loading</title></Helmet><Loader /></>
         : (<Container>
@@ -165,16 +173,46 @@ const DetailPresenter = ({ result, error, loading }) => (
                     </ItemContainer>
                     <Overview>{result.overview}</Overview>
                     <TabContainer>
-                        <Tab>
-                            <ALink href={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`} target='_blank'>Youtube</ALink>
-                        </Tab>
-                        <Tab>
-                            <SLink>Season</SLink>
-                        </Tab>
-                        <Tab>
-                            <SLink>Production Company</SLink>
-                        </Tab>
+                        {
+                            result.videos.results.length > 0 ? <Tab><ALink href={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`} target='_blank'>Youtube</ALink></Tab>
+                            : null
+                        }
+                        {isMovie ? <Tab><SLink onClick={handleCollection}>Collection</SLink></Tab> : <Tab>
+                            <SLink onClick={handleSeason}>Season</SLink>
+                        </Tab>}
+                        {isMovie ? null : <Tab><SLink onClick={handleCreatedBy}>Created By</SLink></Tab>}
                     </TabContainer>
+                    <TabViewer>
+                        {result.belongs_to_collection && collection === true && <Section title='Collection'>{
+                                <Poster
+                                    key={result.belongs_to_collection.id}
+                                    id={result.belongs_to_collection.id}
+                                    title={result.belongs_to_collection.name}
+                                    imageUrl={result.belongs_to_collection.poster_path}
+                                />
+                        }</Section>}
+                        {result.seasons && season === true && <Section title='Season'>{
+                            result.seasons.map(
+                                show => <Poster
+                                    key={show.id}
+                                    id={show.id}
+                                    title={show.name}
+                                    imageUrl={show.poster_path}
+                                />
+                            )
+                            }</Section>} {
+                                result.created_by && create === true && <Section title='Created By'>{
+                                    result.created_by.map(
+                                        show => <Profile
+                                            key={show.id}
+                                            id={show.id}
+                                            title={show.name}
+                                            imageUrl={show.profile_path}
+                                        />
+                                    )
+                                    }</Section>
+                            }
+                    </TabViewer>
                 </Data>
             </Content>
         </Container>)
@@ -182,7 +220,14 @@ const DetailPresenter = ({ result, error, loading }) => (
 
 DetailPresenter.prototype = {
     result: PropTypes.object,
+    handleSeason: PropTypes.func,
+    handleCreatedBy: PropTypes.func,
+    handleCollection: PropTypes.func,
+    create: PropTypes.bool,
+    collection: PropTypes.bool,
+    season: PropTypes.bool,
     error: PropTypes.string,
+    isMovie: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired
 };
 

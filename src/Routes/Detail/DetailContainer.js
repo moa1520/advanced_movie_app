@@ -13,6 +13,9 @@ export default class DetailContainer extends Component {
             result: null,
             error: null,
             loading: true,
+            season: false,
+            create: false,
+            collection: false,
             isMovie: path.includes('movie')
         };
     }
@@ -36,9 +39,9 @@ export default class DetailContainer extends Component {
         let result = null;
         try {
             if (isMovie) {
-                ({data:result} = await moviesApi.movieDetail(parsedId));
+                ({data: result} = await moviesApi.movieDetail(parsedId));
             } else {
-                ({data:result} = await tvApi.tvDetail(parsedId));
+                ({data: result} = await tvApi.tvDetail(parsedId));
             }
         } catch  {
             this.setState({error: "Can't find anything."});
@@ -48,7 +51,50 @@ export default class DetailContainer extends Component {
     }
 
     render() {
-        const {result, error, loading} = this.state;
-        return <DetailPresenter result={result} error={error} loading={loading}/>;
+        const {
+            result,
+            season,
+            create,
+            collection,
+            error,
+            loading,
+            isMovie
+        } = this.state;
+
+        const handleSeason = () => {
+            if (season === true) {
+                this.setState({season: false})
+            } else {
+                this.setState({season: true})
+            }
+        }
+
+        const handleCollection = () => {
+            if (collection === true) {
+                this.setState({collection: false})
+            } else {
+                this.setState({collection: true})
+            }
+        }
+
+        const handleCreatedBy = () => {
+            if (create === true) {
+                this.setState({create: false})
+            } else {
+                this.setState({create: true})
+            }
+        }
+
+        return <DetailPresenter
+            result={result}
+            create={create}
+            season={season}
+            collection={collection}
+            handleCollection = {handleCollection}
+            isMovie={isMovie}
+            handleCreatedBy={handleCreatedBy}
+            handleSeason={handleSeason}
+            error={error}
+            loading={loading}/>;
     }
 }
