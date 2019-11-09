@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const API_KEY = '803b005f53021a61c58a9a205576b6f5';
-const LANGUAGE = 'en-US';
+const LANGUAGE = 'ko';
 
-const api = axios.create({baseURL: "https://api.themoviedb.org/3"});
+const api = axios.create({ baseURL: "https://api.themoviedb.org/3" });
 
 export const moviesApi = {
     nowPlaying: () => api.get('/movie/now_playing', {
@@ -35,7 +35,7 @@ export const moviesApi = {
         params: {
             api_key: API_KEY,
             language: LANGUAGE,
-            query : encodeURIComponent(query)
+            query: encodeURIComponent(query)
         }
     })
 }
@@ -70,7 +70,7 @@ export const tvApi = {
         params: {
             api_key: API_KEY,
             language: LANGUAGE,
-            query : encodeURIComponent(query)
+            query: encodeURIComponent(query)
         }
     })
 }
