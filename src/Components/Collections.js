@@ -23,8 +23,9 @@ const Image = styled.div`
 
 const Rating = styled.span`
   bottom: 5px;
-  right: 5px;
+  right: 15px;
   position: absolute;
+  font-size: 12px;
   transition: opacity 0.1s linear;
   opacity: 0;
 `;
@@ -56,8 +57,8 @@ const Overview = styled.span`
 const CLink = styled(Link)``;
 
 const Collections = ({ id, title, imageUrl, rating, overview }) => (
-  <CLink to={`/movie/${id}`}>
-    <Container>
+  <Container>
+    <CLink to={`/movie/${id}`}>
       <ImageContainer>
         <Image
           bgUrl={
@@ -73,14 +74,14 @@ const Collections = ({ id, title, imageUrl, rating, overview }) => (
           {rating}/10
         </Rating>
       </ImageContainer>
-      <div>
-        <Title>
-          {title.length > 18 ? `${title.substring(0, 18)}...` : title}
-        </Title>
-        <Overview>{overview}</Overview>
-      </div>
-    </Container>
-  </CLink>
+    </CLink>
+    <div>
+      <Title>
+        {title.length > 18 ? `${title.substring(0, 18)}...` : title}
+      </Title>
+      <Overview>{overview}</Overview>
+    </div>
+  </Container>
 );
 
 Collections.propTypes = {
