@@ -43,7 +43,7 @@ const Image = styled.div`
   background-position: center center;
   border-radius: 10px;
   height: 480px;
-  width: 300px;
+  width: 340px;
 `;
 
 const RightContent = styled.div`
@@ -68,6 +68,7 @@ const CollectionPresenter = ({ result, error, loading }) => {
       <RightContent>
         {result.parts.map(part => (
           <Collections
+            id={part.id}
             title={part.title}
             imageUrl={part.poster_path}
             rating={part.vote_average}

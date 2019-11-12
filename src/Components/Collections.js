@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -52,30 +53,34 @@ const Overview = styled.span`
   opacity: 0.7;
 `;
 
-const Collections = ({ title, imageUrl, rating, overview }) => (
-  <Container>
-    <ImageContainer>
-      <Image
-        bgUrl={
-          imageUrl
-            ? `https://image.tmdb.org/t/p/w300${imageUrl}`
-            : require("../assets/nothing.jpg")
-        }
-      />
-      <Rating>
-        <span role="img" aria-label="rating">
-          ⭐️
-        </span>{" "}
-        {rating}/10
-      </Rating>
-    </ImageContainer>
-    <div>
-      <Title>
-        {title.length > 18 ? `${title.substring(0, 18)}...` : title}
-      </Title>
-      <Overview>{overview}</Overview>
-    </div>
-  </Container>
+const CLink = styled(Link)``;
+
+const Collections = ({ id, title, imageUrl, rating, overview }) => (
+  <CLink to={`/movie/${id}`}>
+    <Container>
+      <ImageContainer>
+        <Image
+          bgUrl={
+            imageUrl
+              ? `https://image.tmdb.org/t/p/w300${imageUrl}`
+              : require("../assets/nothing.jpg")
+          }
+        />
+        <Rating>
+          <span role="img" aria-label="rating">
+            ⭐️
+          </span>{" "}
+          {rating}/10
+        </Rating>
+      </ImageContainer>
+      <div>
+        <Title>
+          {title.length > 18 ? `${title.substring(0, 18)}...` : title}
+        </Title>
+        <Overview>{overview}</Overview>
+      </div>
+    </Container>
+  </CLink>
 );
 
 Collections.propTypes = {
