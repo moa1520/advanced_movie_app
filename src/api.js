@@ -40,7 +40,7 @@ export const moviesApi = {
       params: {
         api_key: API_KEY,
         language: LANGUAGE,
-        query: encodeURIComponent(query)
+        query: query
       }
     })
 };
@@ -80,7 +80,7 @@ export const tvApi = {
       params: {
         api_key: API_KEY,
         language: LANGUAGE,
-        query: encodeURIComponent(query)
+        query: query
       }
     })
 };
